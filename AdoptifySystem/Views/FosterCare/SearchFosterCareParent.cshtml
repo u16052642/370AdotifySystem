@@ -1,0 +1,134 @@
+﻿@model List<AdoptifySystem.Foster_Care_Parent>
+@{
+    ViewBag.Title = "SearchFosterCareParent";
+}
+
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>FosterCare Parent List</h1>
+    </div>
+    <h1>@ViewBag.errormessage</h1>
+    @Html.ActionLink("Create New", "AddFosterCareParent", null, new { @style = "color: # fff" }, new { @class = "btn btn-success" })
+
+    @using (Html.BeginForm("SearchDonationType", "Donations", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-md-5">
+                <h4><span style="font-weight:bold">Search Criteria:<span class="label label-default"></span></span></h4>
+                @Html.TextBox("search", "", new { @name = "txtSearch", @placeholder = "Search Criteria" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" value="Search" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    }
+    <br />
+    <table class="table table-bordered">
+        <tr class="thead-light">
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Surname
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Cell Number
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+
+
+        @if (Model == null)
+        {
+            <tr>
+                <td colspan="8">
+                    No results found
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Foster_Parent_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Foster_Parent_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Foster_Parent_Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Foster_Parent_Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Foster_Parent_CellNumber)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "MaintainFosterCareParent", new { id = item.Foster_Parent_ID }, new { @class = "btn btn-warning" }) |
+
+                        <button class="btn moreinfo" data-toggle="modal" data-target="#@item.Foster_Parent_ID">More info </button> |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Foster_Parent_ID }, new { @class = "btn btn-danger" }) |
+                    </td>
+                </tr>
+                <div class="modal fade" id="@item.Foster_Parent_ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">@item.Foster_Parent_Name + " " + @item.Foster_Parent_Surname</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <span class="value">Address:</span>
+                                @Html.DisplayFor(modelItem => item.Foster_Parent_Address) <br />
+                                <span class="value">Cell number:</span>
+                                @Html.DisplayFor(modelItem => item.Foster_Parent_CellNumber) <br />
+                                <span class="value">Work number:</span>
+                                @Html.DisplayFor(modelItem => item.Foster_Parent_Address) <br />
+                                <span class="value">Email:</span>
+                                @Html.DisplayFor(modelItem => item.Foster_Parent_Email) <br />
+                                <span class="value">ID number:</span>
+                                @Html.DisplayFor(modelItem => item.Foster_Parent_IDNumber) <br />
+                                <span class="value">Number in the Household:</span>
+                                @Html.DisplayFor(modelItem => item.Num_In_Household) <br />
+                                <span class="value">Type of Housing:</span>
+                                @Html.DisplayFor(modelItem => item.Type_Of_Housing) <br />
+                                <span class="value">Ownership of Housing:</span>
+                                @Html.DisplayFor(modelItem => item.Ownership_Housing) <br />
+                                <span class="value">Hours Left Alone:</span>
+                                @Html.DisplayFor(modelItem => item.Hours_Left_Alone) <br />
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                @Html.ActionLink("Maintain", "MaintainFosterCareParent", new { id = item.Foster_Parent_ID }, new { @style = "color: white", @class = "btn btn-warning" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+
+    </table>
+    }
+
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

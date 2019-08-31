@@ -1,0 +1,35 @@
+﻿@model AdoptifySystem.Stock_Type
+@{
+    ViewBag.Title = "Add Stock Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Add Stock Type</h2>
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <h4 style="color:red">@ViewBag.errormessage</h4>
+            <hr />
+            <div class="form-group">
+                <label>Stock Type Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="StockTypename" name="Stock_Type_Name" placeholder="Stock Type Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Stock Type Description</label>
+                <div class="col-md-10">
+                    <textarea type="text" class="form-control" id="StockTypeDescription" name="Stock_Type_Description" placeholder="Stock Type Description"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                    <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Save</button>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

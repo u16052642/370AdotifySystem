@@ -1,0 +1,20 @@
+﻿body,
+html{
+    min-height: 100%;
+
+}
+/*Login screen*/
+.wrapper {	
+	margin-top: 150px;
+    margin-bottom: 80px;
+}
+
+.form-signin {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #403b3b;
+    color: #ffffff;
+    font-family: Century;
+    border: 1px solid rgba(0,0,0,0.1);
+}

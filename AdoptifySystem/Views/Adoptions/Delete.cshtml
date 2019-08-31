@@ -1,0 +1,97 @@
+﻿@model AdoptifySystem.Adoption
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>Cancel Adoption</h1>
+    </div>
+    <hr />
+    <h3>Are you sure you want to Cancel this Adoption?</h3>
+    <div>
+        <h4>Adoption</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Adoption Date:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adoption_Date)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Adoption_Form)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adoption_Form)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Collection_Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Collection_Date)
+            </dd>*@
+
+            <dt>
+                Adopter Details:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adopter.Adopter_Name)
+            </dd>
+
+            <dt>
+                Animal Details:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Animal.Animal_Name)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Payment.Payment_Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Payment.Payment_Description)
+            </dd>*@
+
+            <dt>
+                Adoption Status Level:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adoption_Status.Adopt_Status_Name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Back", "Index", "Adoptions", null, new { @class = "btn btn-primary pull-left glyphicon glyphicon-remove-sign" })
+                <input id="Delete" type="submit" value="Cancel Adoprion" name="Delete"  class="btn btn-danger" /> 
+               
+            </div>
+        }
+    </div>
+    </div>
+@section scripts{
+    <script>
+        function Delete(id) {
+            alertify.confirm('Wollies Adoption Process','Are You Sure to Cancel this Adoption?',function(){
+                window.location.href  = '@Url.Action("DeleteConfirmed", "Admin")/'+id;
+            },null );
+        }
+    </script>
+}

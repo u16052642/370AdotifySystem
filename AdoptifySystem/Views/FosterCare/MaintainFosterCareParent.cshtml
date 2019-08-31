@@ -1,0 +1,106 @@
+﻿@model AdoptifySystem.Foster_Care_Parent
+
+@{
+    ViewBag.Title = "Maintain Foster Care Parent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Maintain Foster Care Parent</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Foster_Parent_ID)
+        <div class="form-horizontal">
+            <h4 style="color:red">@ViewBag.errormessage</h4>
+            <hr />
+            <div class="row" style="border:2px solid royalblue;">
+                <div class="column">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="FosterParentName" name="Foster_Parent_Name" value="@Model.Foster_Parent_Name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Address:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="FosterParentAddress" name="Foster_Parent_Address" value="@Model.Foster_Parent_Address" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label> Work Number:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="FosterParentWorkNumber" name="Foster_Parent_WorkNumber" value="@Model.Foster_Parent_WorkNumber" placeholder="Work Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>ID Number:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="Foster_Parent_IDNumber" name="Foster_Parent_IDNumber" value="@Model.Foster_Parent_IDNumber" placeholder="ID Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Type of Housing:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="Type_Of_Housing" name="Type_Of_Housing" value="@Model.Type_Of_Housing" placeholder="Type of Housing">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Hours Left Alone:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="DonationTypename" name="Hours_Left_Alone" value="@Model.Hours_Left_Alone" placeholder="Hours Left Alone">
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="form-group">
+                        <label>Surname:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="FosterParentSurname" name="Foster_Parent_Surname" value="@Model.Foster_Parent_Surname" placeholder="Surname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cell Number:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="FosterParentCellNumber" name="Foster_Parent_CellNumber" value="@Model.Foster_Parent_CellNumber" placeholder="Cell Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="FosterParentEmail" name="Foster_Parent_Email" value="@Model.Foster_Parent_Email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Number in Household:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="Num_In_Household" name="Num_In_Household" value="@Model.Num_In_Household" placeholder="Number in Household">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ownership of Housing:</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="DonationTypeDescription" name="Ownership_Housing" value="@Model.Ownership_Housing" placeholder="Ownership of Housing">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                    <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Save</button>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+        }
+    </style>

@@ -1,0 +1,60 @@
+﻿@model AdoptifySystem.Vet_Appointment_Master
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Vet_Appointment_Master</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AppointmentDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Animal.Animal_Image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Animal.Animal_Image)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Veterinarian.Vet_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Veterinarian.Vet_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VetAppReason.Reason)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VetAppReason.Reason)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Vet_Appoint_Line_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

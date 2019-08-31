@@ -1,0 +1,67 @@
+﻿@model AdoptifySystem.Vet_Appointment_Master
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Vet_Appointment_Master</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AppointmentDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Animal.Animal_Image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Animal.Animal_Image)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Veterinarian.Vet_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Veterinarian.Vet_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VetAppReason.Reason)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VetAppReason.Reason)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    </div>

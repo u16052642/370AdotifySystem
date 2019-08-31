@@ -1,0 +1,94 @@
+﻿@model AdoptifySystem.Mecidal_Card
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>Capture Medical Card</h1>
+    </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Mecidal Card Details</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div>
+                <lable>Animal</lable>
+
+                    @Html.DropDownList("Animal_ID", null, htmlAttributes: new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Animal_ID, "", new { @class = "text-danger" })
+                
+            </div>
+            <br />
+            <div>
+                <lable>Vet Appointment</lable>
+                
+                    @Html.DropDownList("Vet_Appointment_ID", null, htmlAttributes: new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Vet_Appointment_ID, "", new { @class = "text-danger" })
+                
+            </div>
+            <br />
+            <div>
+                <lable>Diagnosis Details</lable>
+               
+                    @Html.EditorFor(model => model.Diagnosis_Details, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Diagnosis_Details, "", new { @class = "text-danger" })
+                
+            </div>
+            <br />
+            <div>
+                <lable>Arrival from Vet Date</lable>
+                
+                    @Html.EditorFor(model => model.Arrival_from_Vet, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Arrival_from_Vet, "", new { @class = "text-danger" })
+               
+            </div>
+            <br />
+            <div>
+                <lable>Next Appointment Date</lable>
+                
+                    @Html.EditorFor(model => model.Next_Appointment_Date_, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Next_Appointment_Date_, "", new { @class = "text-danger" })
+               
+            </div>
+            <br />
+            <div>
+                <lable>Upload Medical Card</lable>
+                
+                    @Html.EditorFor(model => model.MedicalCard, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.MedicalCard, "", new { @class = "text-danger" })
+               
+            </div>
+            <br />
+            <div>
+                <lable>Animal Treatment</lable>
+               
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Animal_Treatment)
+                        @Html.ValidationMessageFor(model => model.Animal_Treatment, "", new { @class = "text-danger" })
+                    </div>
+                
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success glyphicon glyphicon-plus" />
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+<div>
+    @Html.ActionLink("Refresh", "Create", "Mecidal_Card", null, new { @class = "btn btn-default glyphicon glyphicon-refresh" })
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index", "Mecidal_Card", null, new { @class = "btn btn-primary glyphicon glyphicon-circle-arrow-left" })
+</div>

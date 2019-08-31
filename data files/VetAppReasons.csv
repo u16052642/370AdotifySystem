@@ -1,0 +1,9 @@
+﻿VetAppReasonsID,Animal_Type_ID,Reason
+1,1,sterialisation
+2,2,sterialisation
+3,1,Vaccination
+4,2,Vaccination
+5,1,Hurt
+6,2,Hurt
+7,1,Illness
+8,2,Illness

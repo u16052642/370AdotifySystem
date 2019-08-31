@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AdoptifySystem.Volunteer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        @using (Html.BeginForm("Index", "Volunteers", FormMethod.Get))
+        {
+            <b>Search by:</b>@Html.RadioButton("Searchby", "Vol_Name", true) <text>Volunteer Name</text>
+            @Html.RadioButton("Searchby", "Vol_Surname")<text>Volunteer Surname</text><br />
+            @Html.TextBox("search")<input type="submit" value="Search" ? />
+        }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vol_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vol_Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vol_Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vol_ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vol_Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vol_Emergency_ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vol_Emergency_ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title.Title_Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol_Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol_Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol_ContactNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol_Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol_Emergency_ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vol_Emergency_ContactNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title.Title_Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Vol_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Vol_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Vol_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

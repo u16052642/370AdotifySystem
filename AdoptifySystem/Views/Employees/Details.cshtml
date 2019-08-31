@@ -1,0 +1,72 @@
+﻿@model AdoptifySystem.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+<div id="main">
+    <h2>Details</h2>
+    <div>
+        <h4>Employee</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_Surname)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Surname)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_ContactNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_ContactNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_IDNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_IDNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_Contract)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Contract)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Emp_Date_Employed)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Emp_Date_Employed)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Title.Title_Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title.Title_Description)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Employee_Type.Emp_Type_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Employee_Type.Emp_Type_Name)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Emp_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

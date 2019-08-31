@@ -1,0 +1,244 @@
+﻿
+
+/*Navigation panes*/
+
+#main {
+    margin-left: 100px;
+    margin-top: 50px;
+    padding: 0px 10px;
+}
+
+tr:nth-child(even) {
+  background-color:cornflowerblue
+}
+
+.sub {
+    background-color: cornflowerblue;
+    text-decoration:none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding-left: 25px;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+a .sub:hover{
+    text-decoration:none;
+}
+.sub:hover{
+    text-decoration:none;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/*.accordion:hover {
+    background-color: #FF5733;
+}*/
+
+#menu {
+    list-style:none;
+}
+
+
+#menu {
+    height: 100vh;
+    width: 280px;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+    background-color:cornflowerblue;
+}
+
+    #menu a {
+        text-decoration: none;
+        color: #fff;
+        font-family: 'Lato', sans-serif;
+        font-weight: 200; 
+    }
+#menu a:hover{
+    color:black;
+}
+
+.accordion {
+    background-color: cornflowerblue;
+    height: 50px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-family: 'Lato', sans-serif; /*KIM*/
+}
+
+
+
+.accordion:before {
+    content: '+'; /* Unicode character for "plus" sign (+) */
+    font-size: 20px;
+    padding: 0px 0px 0px 5px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.accordion:active {
+    content: "-"; /* Unicode character for "minus" sign (-) */
+    font-size: 20px;
+    padding: 0px 0px 0px 5px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+
+.active, .sub:hover {
+    /*background-color: #ccc; KIM*/ 
+}
+
+
+.active {
+    background-color: #FF5733;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    /*color: #fff;*/
+}
+h2.main{
+    font-weight:500;
+}
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight:300;
+    font-size: 30px;
+}
+h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+}
+
+
+.stdSearch {
+    position: relative;
+    
+}
+
+
+    li {
+        font-family: 'Lato', sans-serif;
+    }
+#navbarstyle{
+    border:none;
+}
+a.navbar-brand {
+    color: cornflowerblue;
+}
+.info_card {
+    background-color: #fff; 
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 10px grey;
+    padding: 1.25em;
+    height: auto;
+    width:500px;
+    text-align:center;
+}
+
+    .info_card .p {
+        margin-bottom: 0;
+    }
+
+    .info_card hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+div.data {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: #26282C;
+}
+    
+        span.value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight:400;
+            padding-right:8px;
+            font-size: 18px;
+            color: #FF5733;
+        }
+    div.editvals{
+        padding:10px;
+    }
+.info.products{
+    width:200px; 
+
+}
+.prod_list{
+    margin-top:10px;
+}
+.moreinfo {
+    background-color: #FF5733;
+    width: 80px;
+    color: #fff;
+    border: none;
+    height: 30px;
+}
+
+button.accordion {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+}
+.fas, .far{
+    padding-right: 7px;
+    color:#fff;
+}
+.usr_buttons {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    font-size: 12px;
+}
+th {
+    font-family: 'Montserrat', sans-serif;
+    font-size:13px;
+}
+.logo{
+    width: 500px; 
+    height:auto;    
+    padding: 40px;
+    padding-left:0px;
+    display:block;
+    margin-left: auto;  
+}
+.lead {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    width: 900px; 
+    font-weight: 400;
+    margin-left: auto;
+    padding-left: 100px;
+}
+.learn{
+    position:relative;
+   left:800px;
+}
+.heading {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: #26282C;
+}
+.products a {
+    color: #FF5733;
+    text-decoration: none;
+}
+        .products a:hover {
+            text-decoration: none;
+            color: #FF5733;
+        }
+
+        

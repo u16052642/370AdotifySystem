@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AdoptifySystem.Models.VetAppointReport>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <style type="text/css">
+        th {
+            padding: 0 15px 0 15px;
+        }
+    </style>
+<div id="main">
+    <h2>Veterinarian Appointment List</h2>
+
+
+    <table>
+        <tr>
+            <th>
+                Animal Name
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                Veterinarian Name
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                Telephone
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                Address
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                Appointment Date
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                Description
+            </th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.AnimalList.Animal_Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.VetList.Vet_Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.VetList.Vet_Tel)/td>
+                <td>@Html.DisplayFor(modelItem => item.VetList.Vet_Address)</td>
+                <td>@Html.DisplayFor(modelItem => item.AppointList.AppointmentDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.AppointList.Description)</td>
+            </tr>
+        }
+    </table>
+
+    </div>

@@ -1,0 +1,28 @@
+﻿@model AdoptifySystem.Event_Type
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Event_Type</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Event_Type_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Event_Type_Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Event_Type_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

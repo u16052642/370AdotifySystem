@@ -1,0 +1,94 @@
+﻿@model AdoptifySystem.Adoption
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>Create Adoption</h1>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Adoption</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Select Adoption Date</label>
+                <div class="col-md-10">
+                    <input type="date" name="ADate" class="form-control" required = "required" />
+                    @Html.ValidationMessageFor(model => model.Adoption_Date, "", new { @class = "text-danger", required = "required" })
+                </div>
+            </div>
+
+
+
+            @*<div style="visibility:hidden" class="form-group">
+                @Html.LabelFor(model => model.Payment_ID, "Payment_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Payment_ID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Payment_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Select Adopter</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("Adopter_ID", null, htmlAttributes: new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Adopter_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div style="visibility:hidden" class="form-group">
+
+                <div class="col-md-10">
+                    @Html.DropDownList("Adopt_Status_ID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Adopt_Status_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Select Animal</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("Animal_ID", null, htmlAttributes: new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(model => model.Animal_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div style="visibility:hidden" class="form-group">
+                @Html.LabelFor(model => model.Collection_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Collection_Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Collection_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Adoption_Form, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Adoption_Form, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.Adoption_Form, "", new { @class = "text-danger" })
+                    </div>*@
+                <label class="control-label col-md-2" required = "required">Please upload Application Docmentation </label>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="file" name="file" class="form-control" required ="required" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back", "Index", "Adoptions", null, new { @class = "btn btn-primary glyphicon glyphicon-circle-arrow-left" })
+
+    </div>
+    </div>

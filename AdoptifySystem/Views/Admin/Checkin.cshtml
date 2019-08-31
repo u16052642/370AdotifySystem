@@ -1,0 +1,164 @@
+﻿@model AdoptifySystem.Models.nickeymodel.Flexible
+@{
+    ViewBag.Title = "Checkin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border-radius: 5px; /* 5px rounded corners */
+        }
+
+        /* Add rounded corners to the top left and the top right corner of the image */
+        img {
+            border-radius: 5px 5px 0 0;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function Copy() {
+            var x = document.getElementById("text").value;
+            var hiddenvalue = document.getElementById(x).value;
+            //set the the hidden value to the input that going to call the onchange
+            document.getElementById("hide").value = hiddenvalue;
+            var y = document.getElementById("hide").value;
+            //alert(y);
+        }
+        //function clock() {
+
+        //    //Save the times in variables
+
+        //    var today = new Date();
+
+        //    var hours = today.getHours();
+        //    var minutes = today.getMinutes();
+        //    var seconds = today.getSeconds();
+
+
+        //    //Set the AM or PM time
+
+        //    if (hours >= 12) {
+        //        meridiem = " PM";
+        //    }
+        //    else {
+        //        meridiem = " AM";
+        //    }
+
+
+        //    //convert hours to 12 hour format and put 0 in front
+        //    if (hours > 12) {
+        //        hours = hours - 12;
+        //    }
+        //    else if (hours === 0) {
+        //        hours = 12;
+        //    }
+
+        //    //Put 0 in front of single digit minutes and seconds
+
+        //    if (minutes < 10) {
+        //        minutes = "0" + minutes;
+        //    }
+        //    else {
+        //        minutes = minutes;
+        //    }
+
+        //    if (seconds < 10) {
+        //        seconds = "0" + seconds;
+        //    }
+        //    else {
+        //        seconds = seconds;
+        //    }
+
+
+        //    document.getElementById("clock").innerHTML = (hours + ":" + minutes + ":" + seconds + meridiem);
+
+        //}
+        //setInterval('clock()', 1000);
+    </script>
+</head>
+<div id="main">
+    <h1>Clock-in Detail</h1>
+    <div class="checkin">
+        @if (Model != null)
+        {
+            <datalist name="title" id="exampleList">
+                @foreach (var item in Model.employeelist)
+                {
+                    <option>@item.Emp_Name @item.Emp_Surname</option>
+                    //<input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />
+                }
+            </datalist>
+
+
+            <div class="row">
+                <div class="column" style="background-color:dodgerblue;">
+                    <h2>Select Employee</h2>
+                    @using (Html.BeginForm("GetUserDetails", "Admin"))
+                {
+                    if (Model.employee != null)
+                    {
+                            @*https://stackoverflow.com/questions/14614702/html-combo-box-with-option-to-type-an-entry*@
+                            <input value="@Model.employee.Emp_Name @Model.employee.Emp_Surname" id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
+                            <input id="hide" name="id" value="@Model.employee.Emp_ID" hidden />
+                            <button id="btnSave" class="btn btn-lg btn-success">Search</button>
+                        }
+                        else if (Model.employee == null)
+                        {
+                            @*https://stackoverflow.com/questions/14614702/html-combo-box-with-option-to-type-an-entry*@
+                            <input value="" id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
+                            <input id="hide" name="id" hidden />
+                            <button id="btnSave" class="btn btn-lg btn-success">Search</button>
+                        }
+                    }
+                    <br />
+                    <h2>Clock-in TimeStamp</h2>
+                    <h4 id="clock"></h4>
+                </div>
+                <div class="column" style="background-color:greenyellow;">
+                    <h2>Current Employee Selected</h2>
+                    @if (Model.employee != null)
+                {
+                        <div id="display" class="card">
+                            <img src="https://i.pinimg.com/originals/4c/cf/da/4ccfdaf6092dc341376e6fdb8130d09d.jpg" alt="Avatar" style="width:500px">
+                            <div class="container">
+                                <h4><b>@Model.employee.Emp_Name @Model.employee.Emp_Surname </b></h4>
+                                <p>Gender:@Model.employee.Emp_IDNumber</p>
+                                <p>Date of Birth:@Model.employee.Emp_Date_Employed</p>
+                                <p>Employee Type:@Model.employee.Employee_Type</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <h1>Nothing</h1>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                @if (Model.employee != null)
+                {
+                    using (Html.BeginForm("Checkin", "Admin"))
+                    {
+                        <div class="col-xs-12">
+                            <br>
+                            <input id="hide" name="id" value="@Model.employee.Emp_ID" hidden />
+                            <button class="btn btn-lg btn-primary pull-left" type="submit"><i class="glyphicon glyphicon-remove-sign"></i> Cancel</button>
+                            <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Clock-in </button>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model AdoptifySystem.Adoption
+
+@{
+    ViewBag.Title = "Finalise";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>Finalise Adoption</h1>
+    </div>
+    <hr />
+
+    @using (Html.BeginForm("Finalise", "Adoptions"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Please Confirm Final Adoption Details and Process by Clicking on "Done"</h4>
+            <hr />
+            <div>
+                <label>Adoption ID: </label> <label style="color:red">@ViewBag.ID</label>
+            </div>
+            <div>
+                <label>Adopter's Details: </label> <label style="color:red">@ViewBag.IDName</label>
+            </div>
+            <div>
+                <label>Animal Details: </label> <label style="color:red">@ViewBag.IDet</label>
+            </div>         
+           
+            <br />
+            <br />
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="DONE" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+
+        @Html.ActionLink("Back", "HomeCheckReportIndex", "Adoptions", null, new { @class = "btn btn-primary glyphicon glyphicon-circle-arrow-left" })
+    </div>
+</div>

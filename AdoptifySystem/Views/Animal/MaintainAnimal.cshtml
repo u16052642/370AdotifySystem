@@ -1,0 +1,368 @@
+﻿@model AdoptifySystem.Models.nickeymodel.Innovation
+@{
+    ViewBag.Title = "Maintain Animal";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        .column {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+
+
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 15px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+
+        .column {
+            width: 100%;
+        }
+    </style>
+
+</head>
+<div id="main">
+    @using (Html.BeginForm("MaintainAnimal", "Animal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <body>
+
+            <div>
+                <div class="col-sm-10" style='background-color: #2ba6cb'><h1 style="color:white;">Add Animal</h1></div>
+            </div>
+
+            <div class="row">
+
+                @*start1*@
+                <div class="column">
+                    <div class="text-center">
+                        <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.animal.Animal_Image)" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <h6>Upload an animal photo...</h6>
+                        <input type="file" name="animalPicture" class="text-center center-block file-upload">
+                    </div>
+
+                    <input type="text" name="Animal_ID" value="@Model.animal.Animal_ID" hidden />
+                    <div class="form-group">
+                        <label><b>Cross Breed?</b></label><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="Cross_Breed" value="True" id="Yes">
+                            <label for="customRadio1"><b>Yes</b></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="Cross_Breed" value="False" id="No">
+                            <label for="customRadio2"><b>No</b></label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-6">
+                        <label><b>Animal Breed</b></label>
+                        <div class="col-md-10">
+                            <select name="Animal Breed">
+                                @if (Model.breedTypes != null)
+                                {
+                                    foreach (var item in Model.breedTypes)
+                                    {
+                                        <option value="@item.Animal_Breed_ID">@item.Animal_Breed_Name</option>
+                                    }
+                                }
+                                else
+                                {
+                                    <option>Go add Animal Breed</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <label><b>Castrated?</b></label>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="Animal_Castration" value="True" id="Yes">
+                            <label for="customRadio1"><b>Yes</b></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" name="Animal_Castration" value="False" id="No">
+                            <label for="customRadio2"><b>No</b></label>
+                        </div>
+                        <div class="form-group">
+                        </div>
+
+                        <div class="col-xs-6">
+                            <label><b>Animal Name</b></label>
+                            <input type="text" name="Animal_Name" value="@Model.animal.Animal_Name" placeholder="Enter Animal Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label><b>Animal Description</b></label>
+                            <input type="text" name="Animal_Description" value="@Model.animal.Animal_Description" placeholder="Enter Animal Description">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label><b>Animal Gender</b></label>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" name="Animal_Gender" value="Male" id="Male">
+                                <label for="customRadio1"><b>Male</b></label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" name="Animal_Gender" value="Female" id="Female">
+                                <label for="customRadio2"><b>Female</b></label>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <label><b>Animal Age</b></label>
+                                <input type="number" name="Animal_Age" value="@Model.animal.Animal_Age" placeholder="Enter Animal Age">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label><b>Animal Size</b></label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="Animal_Size" value="Small" id="Small">
+                                    <label for="customRadio1"><b>Small</b></label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="Animal_Size" value="Medium" id="Medium">
+                                    <label for="customRadio2"><b>Medium</b></label>
+                                </div>
+
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="Animal_Size" value="Large" id="Large">
+                                    <label for="customRadio2"><b>Large</b></label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><b>Entry Date Of Animal</b></label>
+                                <input type="datetime" name="Animal_Entry_Date" value="@Model.animal.Animal_Entry_Date" placeholder="MM/DD/YY" />
+                            </div>
+
+                            <div class="form-group">
+                                <label><b>Animal Type</b></label>
+                                <div class="col-md-10">
+                                    <select name="AnimalBreed">
+                                        @if (Model.animalTypes != null)
+                                        {
+                                            foreach (var item in Model.animalTypes)
+                                            {
+                                                <option value="@item.Animal_Type_ID">@item.Animal_Type_Name</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option>Go Add Animal Type</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><b>Sterilized?</b></label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="Animal_Sterilization" value="True" id="Yes">
+                                    <label for="customRadio1"><b>Yes</b></label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="Animal_Sterilization" value="False" id="No">
+                                    <label for="customRadio2"><b>No</b></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*end1*@
+
+
+                        @*start2*@
+                        <div class="column">
+                            <div>
+                                <div class="col-sm-10" style='background-color: #2ba6cb'><h style="color:white;">Animal Medical</h></div>
+                            </div>
+                            @if (Model.micro == null)
+                            {
+                                <div class="col-xs-6">
+                                    <label><b>Animal Microchip Code</b></label><br>
+                                    <input type="text" name="Animal_Microchip_Code" placeholder="Animal  Microchip Code">
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Implanteers Pin Number</b></label><br>
+                                    <input type="text" name="Implanters_PIN_Number" placeholder="Implanteers Pin Number">
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Date Of Implant</b></label><br>
+                                    <input type="datetime" name="Date_of_Implant" placeholder="MM/DD/YY" required>
+                                </div>
+
+
+                                <div class="col-xs-6">
+                                    <label><b>Owner Name</b></label><br>
+                                    <input type="text" name="Owner_Name" placeholder="Enter Owner Name" required>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Owner Contact Number</b></label><br>
+                                    <input type="number" value="" placeholder="Owner Contact Number">
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Owner Address</b></label><br>
+                                    <input type="text" name="Owner_Address" placeholder="Enter Owner Address" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" name="button" value="Save" class="btn btn-default" />
+                                    <button type="button" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                                </div>
+                            }
+                            else
+                            {
+
+
+                                <div class="col-xs-6">
+                                    <label><b>Animal Microchip Code</b></label><br>
+                                    <input type="text" name="Animal_Microchip_Code" value="@Model.micro.Animal_Microchip_Code" placeholder="Animal  Microchip Code">
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Implanteers Pin Number</b></label><br>
+                                    <input type="text" name="Implanters_PIN_Number" value="@Model.micro.Implanters_PIN_Number" placeholder="Implanteers Pin Number">
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Date Of Implant</b></label><br>
+                                    <input type="datetime" name="Date_of_Implant" value="@Model.micro.Date_of_Implant" placeholder="MM/DD/YY" required>
+                                </div>
+
+
+                                <div class="col-xs-6">
+                                    <label><b>Owner Name</b></label><br>
+                                    <input type="text" name="Owner_Name" value="@Model.micro.Owner_Name" placeholder="Enter Owner Name" required>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Owner Contact Number</b></label><br>
+                                    <input type="number" value="" placeholder="Owner Contact Number">
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label><b>Owner Address</b></label><br>
+                                    <input type="text" name="Owner_Address" value="@Model.micro.Owner_Address" placeholder="Enter Owner Address" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" name="button" value="Save" class="btn btn-default" />
+                                    <button type="button" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                                </div>
+                            }
+
+                        </div>
+                        @*start2*@
+
+
+                    </div>
+                </div>
+            </div>
+        </body>
+
+    }
+    </div>
+    @section scripts{
+        <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+         $(function () {
+            var successMessage = '@TempData["EditMessage"]'
+            if (successMessage != '')
+                alertify.warning(successMessage);
+         });
+        $(function () {
+            var successMessage = '@TempData["DeleteMessage"]'
+            if (successMessage != '')
+                alertify.error(successMessage);
+        });
+
+        </script>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

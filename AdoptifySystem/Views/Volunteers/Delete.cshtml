@@ -1,0 +1,91 @@
+﻿@model AdoptifySystem.Volunteer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Volunteer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Vol_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vol_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vol_Surname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vol_Surname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vol_Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vol_Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vol_ContactNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vol_ContactNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vol_Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vol_Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vol_Emergency_ContactName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vol_Emergency_ContactName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Vol_Emergency_ContactNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Vol_Emergency_ContactNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title.Title_Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title.Title_Description)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    </div>

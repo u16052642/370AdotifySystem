@@ -1,0 +1,91 @@
+﻿@model AdoptifySystem.Models.nickeymodel.Flexible
+
+@{
+    ViewBag.Title = "AddtoFosterCare";
+}
+<div id="main">
+    <h2>AddtoFosterCare</h2>
+    <div class="row">
+        <div class="column">
+            @using (Html.BeginForm("Test", "FosterCare"))
+            {
+                <datalist name="title" id="exampleList">
+                    @foreach (var item in Model.fostercareparent)
+                {
+                        <option>@item.Foster_Parent_Name @item.Foster_Parent_Surname</option>
+                        //<input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />
+                    }
+                </datalist>
+                if (Model.parent != null)
+                {
+                    @*https://stackoverflow.com/questions/14614702/html-combo-box-with-option-to-type-an-entry*@
+                    <input value="@Model.parent.Foster_Parent_Name @Model.parent.Foster_Parent_Surname" id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
+                    <input id="hide" name="id" value="@Model.parent.Foster_Parent_ID" />
+                    <button id="btnSave" class="btn btn-lg btn-success">Search</button>
+                }
+                else if (Model.parent == null)
+                {
+                    <h1>hreddasdfsdfasdfd</h1>
+                    <input value="" id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
+                    <input id="hide" name="id" />
+                    <button id="btnSave" class="btn btn-lg btn-success">Search</button>
+                }
+            }
+        </div>
+        <div class="column">
+            @*//this will preview of the Foster Care Parent*@
+            @if (Model.parent != null)
+            {
+                <div class="card">
+                    <h4><b>@Model.parent.Foster_Parent_Name</b></h4>
+                    <p>@Model.parent.Foster_Parent_Surname</p>
+                </div>
+            }
+            else
+            {
+                <h1>Null</h1>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.Fostercarelist != null)
+        {
+
+            <table>
+                <thead class="thead-light"></thead>
+                <tbody>
+                    @foreach (var item in Model.Fostercarelist)
+                {
+                        <tr>
+                            <td>@item.Foster_Care_Parent.Foster_Parent_Name</td>
+                            <td>@item.Animal.Animal_Name</td>
+                            <td>@item.Foster_Start_Date</td>
+                            <td>@item.Foster_Care_Period</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+        else
+        {
+            <h1>No results</h1>
+        }
+    </div>
+    </div>
+    <script>
+        function Copy() {
+            var x = document.getElementById("text").value;
+            var hiddenvalue = document.getElementById(x).value;
+            //set the the hidden value to the input that going to call the onchange
+            document.getElementById("hide").value = hiddenvalue;
+            var y = document.getElementById("hide").value;
+            //alert(y);
+        }
+    </script>

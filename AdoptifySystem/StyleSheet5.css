@@ -1,0 +1,126 @@
+﻿
+/*Login Screen - Use*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* KIM changed this to white*/
+    font-family: Century;
+}
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+}
+.loginbox {
+    /* OKAY LETS JUST ASSUME KIM WAS HERE IN THIS WHOLE DAMN CLASS*/
+    width: 350px; /* KIM was here */
+    height: 510px;
+    color: #fff;
+    background-color: #25292c; /*kim was here */
+    top: 50%;
+    left: 50%;
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 5px;
+    box-shadow: 3px 3px 10px grey;
+}
+
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.loginbox input{
+    width: 100px;
+    margin-bottom: 20px;
+    padding: 5px; /* KIM was here*/
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+    border: none;
+    border-radius:0.1em; /*k*/
+    padding-left:5px;
+    /*background: transparent;  KIM */
+    outline: none;
+    width: 250px;
+    height: 40px;
+    /*color: #fff;*/
+    font-size: 16px;
+}
+
+    .loginbox input[type="submit"] /* KIM was here */ {
+        border: none;
+        outline: none;
+        height: 40px;
+        width: 250px;
+        /*background: #9f1212;*/
+        color: #fff;
+        font-size: 18px;
+        
+        text-align: center;
+        margin-top: 10px;
+    }
+
+        .loginbox input[type="submit"]:hover /* KIM was here */ {
+            cursor: pointer;
+            color: #fff;
+        }
+
+    .loginbox a { /* KIM was here */
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        /*color: darkgrey;*/
+    }
+
+.loginbox a:hover
+{
+    /*color: #ffc107;*/
+}
+
+/* KIM was here*/
+.dlogo{
+    height: 100px; 
+    width:auto; 
+    float:right;
+}
+.login {
+    background-color:#FF5733;
+    font-family:'Lato',sans-serif; 
+    font-weight:200;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size:30px;
+    text-align:center;
+    /*color: #fff;*/
+}
+
+    h2.main {
+        font-weight: 500;
+    }
+
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size:20px;
+}

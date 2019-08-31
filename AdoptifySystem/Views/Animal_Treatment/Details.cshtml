@@ -1,0 +1,91 @@
+﻿@model AdoptifySystem.Animal_Treatment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Animal_Treatment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Treat_StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treat_StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treat_EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treat_EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treat_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treat_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treat_Regularity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treat_Regularity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treat_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treat_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treat_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treat_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Animal_Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Animal_Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mecidal_Card.Diagnosis_Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mecidal_Card.Diagnosis_Details)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Treat_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

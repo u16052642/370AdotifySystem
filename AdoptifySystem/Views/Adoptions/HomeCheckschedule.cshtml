@@ -1,0 +1,50 @@
+﻿@model AdoptifySystem.HomeCheck
+
+@{
+    ViewBag.Title = "HomeCheckschedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>Schedule a HomeCheck</h1>
+    </div>
+    @using (Html.BeginForm("Save", "Adoptions"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Adoption</h4>
+            <hr />
+
+            <div>
+                <label>Home Schedule Date: </label><input name="NDate" type="date" id="date" class="form-control" />
+            </div>
+            <br />
+            <div>
+                <label>Adoption ID: </label> <label style="color:red">@ViewBag.ID</label>
+            </div>
+            <div>
+                <label>Adopter's Details: </label> <label style="color:red">@ViewBag.IDName</label>
+            </div>
+            <div>
+                <label>Animal Details: </label> <label style="color:red">@ViewBag.IDet</label>
+            </div>
+            <br />
+            <div>
+
+                <input type="submit" name="save" value="Save" class="btn btn-success center-block glyphicon glyphicon-floppy-disk" />
+            </div>
+            <div>
+                @Html.ActionLink("Back", "HomeCheckIndex", "Adoptions", null, new { @class = "btn btn-primary glyphicon glyphicon-circle-arrow-left" })
+            </div>
+
+            @*<div >
+
+                    <input type="button" name="reset" value="Reset" class="btn btn-default" />
+                </div>*@
+
+        </div>
+    }
+</div>

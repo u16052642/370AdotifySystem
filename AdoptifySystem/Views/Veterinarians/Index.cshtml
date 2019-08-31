@@ -1,0 +1,131 @@
+﻿@model IEnumerable<AdoptifySystem.Veterinarian>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2 style="color:green">@ViewBag.Message</h2><br />
+            <div id="main">
+                <div class="" style="text-align:center;padding-left:120px">
+                    <h1>Veterinarian Information</h1>
+                </div>
+
+                <div class="newButton">
+                    @Html.ActionLink("Add", "Create", "Veterinarians", null, new { @class = "btn btn-success 	glyphicon glyphicon-plus" })
+                </div>
+                <p>
+                    @using (Html.BeginForm("Index", "Veterinarians", FormMethod.Get))
+                    {
+                        <b>Search by:</b>@Html.RadioButton("Searchby", "Vet_Name", true) <text>Vet Name</text>
+                        @Html.RadioButton("Searchby", "Vet_Address")<text> Vet Address</text><br />
+                        @Html.TextBox("search")<input type="submit" value="Search" ? />
+                    }
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Tel
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vet_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vet_Emial)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vet_Tel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vet_Address)
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", "Veterinarians", new { id = item.Vet_ID }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+                                    @Html.ActionLink("Details", "Details", "Veterinarians", new { id = item.Vet_ID }, new { @class = "btn btn-primary glyphicon glyphicon-eye-open" })
+                                    @Html.ActionLink("Delete", "Delete", "Veterinarians", new { id = item.Vet_ID }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })*@
+                                <button class="btn btn-info glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Vet_ID)"> More Info</button>
+                            </td>
+                        </tr>
+
+                        <div /id="@Html.DisplayFor(modelItem => item.Vet_ID)" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="info_card">
+                                    <div class="card_inner">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h2>  @Html.DisplayFor(modelItem => item.Vet_Name) </h2>
+                                        <hr />
+                                    </div>
+                                    <div class="data">
+
+                                        <span class="value">Email:</span>  @Html.DisplayFor(modelItem => item.Vet_Emial) <br />
+
+                                        <span class="value">Tel:</span>@Html.DisplayFor(modelItem => item.Vet_Tel)<br />
+
+                                        <span class="value">Address:</span> @Html.DisplayFor(modelItem => item.Vet_Address)<br />
+                                        <br />
+                                        @Html.ActionLink("Edit", "Edit", "Veterinarians", new { id = item.Vet_ID }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+                                        @*@Html.ActionLink("Details", "Details", "Veterinarians", new { id = item.Vet_ID }, new { @class = "btn btn-primary glyphicon glyphicon-eye-open" })*@
+                                        @Html.ActionLink("Delete", "Delete", "Veterinarians", new { id = item.Vet_ID }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                                        <br />
+                                        <br />
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove" data-dismiss="modal"><i></i>Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+                </table>
+                @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign" })
+                @Html.ActionLink("Refresh", "Index", "Veterinarians", null, new { @class = "btn btn-default glyphicon glyphicon-refresh" })
+               
+            </div>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+         $(function () {
+            var successMessage = '@TempData["EditMessage"]'
+            if (successMessage != '')
+                alertify.warning(successMessage);
+         });
+        $(function () {
+            var successMessage = '@TempData["DeleteMessage"]'
+            if (successMessage != '')
+                alertify.error(successMessage);
+        });
+
+        @*function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Are You Sure to Delete this Record ?',function(){
+                window.location.href  = '@Url.Action("Delete","Employee")/'+id;
+            },null );
+        }*@
+    </script>
+}

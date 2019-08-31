@@ -1,0 +1,236 @@
+﻿@model List<AdoptifySystem.Animal>
+@{
+    ViewBag.Title = "SearchAnimal";
+}
+<style>
+    #team .card {
+        border: none;
+        background: #ffffff;
+    }
+
+    .frontside .card,
+    .backside .card {
+        min-height: 312px;
+    }
+
+        .backside .card a {
+            font-size: 18px;
+            color: #007b5e !important;
+        }
+
+        .frontside .card .card-title,
+        .backside .card .card-title {
+            color: #007b5e !important;
+        }
+
+        .frontside .card .card-body img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Float four columns side by side */
+    .frontside {
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+
+    /* Remove extra left and right margins, due to padding in columns */
+    .row {
+        margin: 0 -5px;
+    }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    /* Style the counter cards */
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        padding: 16px;
+        text-align: center;
+        background-color: #f1f1f1;
+    }
+
+    /* Responsive columns - one column layout (vertical) on small screens */
+</style>
+<div id="main">
+    <div>
+        <div class="col-sm-10" style='background-color: #2ba6cb'><h1 style="color:white;">Search Animal</h1></div>
+    </div>
+    <h1>@ViewBag.errormessage</h1>
+    @Html.ActionLink("AddTemporaryAnimal", "AddTemporaryAnimal", null, new { @style = "color: # fff" }, new { @class = "btn btn-success" })
+    @using (Html.BeginForm("SearchAnimal", "Animal", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-5">
+                <h4><span style="font-weight:bold">Search Criteria:<span class="label label-default"></span></span></h4>
+                @Html.TextBox("search", "", new { @name = "txtSearch", @placeholder = "Search Criteria" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" value="Search" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+        <br />
+    }
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                if (item.Animal_Image_Type == null)
+                {
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><img class=" img-fluid" src="" alt="card image"></p>
+                                <h4 class="card-title">@item.Animal_Name</h4>
+                                <p class="card-text">@item.Animal_Status.Animal_Status_Name</p>
+                                @Html.ActionLink("Maintain", "MaintainAnimal", new { id = item.Animal_ID }, new { @style = "color: white", @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                }
+                else
+                {
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><img class=" img-fluid" src="data:image/jpeg,@Convert.ToBase64String(item.Animal_Image)" alt="card image"></p>
+                                <h4 class="card-title">@item.Animal_Name</h4>
+                                <p class="card-text">@item.Animal_Status.Animal_Status_Name</p>
+                                @Html.ActionLink("Maintain", "MaintainAnimal", new { id = item.Animal_ID }, new { @style = "color: white", @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                }
+                <br />
+            }
+
+        }
+    </div>
+    </div>
+    @*<table class="table table-bordered">
+            <tr class="thead-light">
+                <th>
+                    Animals
+                </th>
+
+                <th>
+                    Animal ID
+                </th>
+                <th>
+                    Action
+                </th>
+
+            </tr>
+
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="8">
+                        No results found
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="card">
+                                <div>@item.Animal_Image</div>
+                          <div class="card-block">
+                              <label><b>Animal Name:</b></label><label><b>@item.Animal_Name</b></label><br />
+                              <label><b>Animal Status:</b></label><label><b>@item.Animal_Status</b></label><br />
+                              <label><b>Location:</b></label><label><b>@item.Animal_Location</b></label><br />
+                           </div>
+
+                            </div>
+
+                        </td>
+                        @Html.DisplayFor(modelItem =>item.Animal_ID)
+                        <td>
+
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("MaintainAnimal", "MaintainAnimal", new { id = item.Animal_ID }, new { @class = "btn btn-warning" }) |
+
+                            <button class="btn moreinfo" data-toggle="modal" data-target="#@item.Animal_ID">More info </button> |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Animal_ID}, new { @class = "btn btn-danger" }) |
+                        </td>
+                    </tr>
+                    <div class="modal fade" id="@item.Animal_ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">@item.Animal_ID</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <span class="value">ID:</span>
+                                    @Html.DisplayFor(modelItem => item.Animal_ID) <br />
+                                    <span class="value">Name:</span>
+                                    @Html.DisplayFor(modelItem => item.Animal_Name) <br />
+                                    <span class="value">Location:</span>
+                                    @Html.DisplayFor(modelItem => item.Animal_Location) <br />
+                                    <span class="value">Gender:</span>
+                                    @Html.DisplayFor(modelItem => item.Animal_Gender) <br />
+                                    <span class="value">Description:</span>
+                                    @Html.DisplayFor(modelItem => item.Animal_Description)<br />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    @Html.ActionLink("Maintain", "MaintainDonor", new { id = item.Animal_ID }, new { @style = "color: white", @class = "btn btn-warning" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        </table>*@
+    @section scripts{
+        <script>
+            $(function () {
+                var successMessage = '@TempData["SuccessMessage"]'
+                if (successMessage != '')
+                    alertify.success(successMessage);
+            });
+            $(function () {
+                var successMessage = '@TempData["EditMessage"]'
+                if (successMessage != '')
+                    alertify.warning(successMessage);
+            });
+            $(function () {
+                var successMessage = '@TempData["DeleteMessage"]'
+                if (successMessage != '')
+                    alertify.error(successMessage);
+            });
+
+        </script>
+    }
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

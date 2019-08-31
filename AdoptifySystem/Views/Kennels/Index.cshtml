@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AdoptifySystem.Kennel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kennel_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kennel_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kennel_Capacity)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kennel_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kennel_Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kennel_Capacity)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Kennel_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Kennel_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Kennel_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

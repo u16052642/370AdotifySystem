@@ -1,0 +1,87 @@
+﻿@model IEnumerable<AdoptifySystem.Animal>
+@{
+    ViewBag.Title = "Animal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Animal</h2>
+
+    <p>
+        
+    </p>
+    <table class="table">
+        <tr>
+
+            <th>
+                Animal Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Sterilization
+            </th>
+            <th>
+                Castration
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+                Entry Date
+            </th>
+            <th>
+                Coat
+            </th>
+            <th>
+                Animal Status
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Sterilization)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Castration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Entry_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Coat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal_Status.Animal_Status_Name)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    </div>

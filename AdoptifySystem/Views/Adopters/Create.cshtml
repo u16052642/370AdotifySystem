@@ -1,0 +1,334 @@
+﻿@model AdoptifySystem.Adopter
+
+@{
+    ViewBag.Title = "Create";
+}
+<div id="main">
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<div class="form-horizontal">
+    <h4>Adopter</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Name" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_Surname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Surname" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_Surname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Email" } })
+            @Html.ValidationMessageFor(model => model.Adopter_Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Title_ID", null, htmlAttributes: new { @class = "form-control" })
+            <br />
+            @Html.ValidationMessageFor(model => model.Title_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_Address, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Address" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_PostalAddress, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_PostalAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Postal Address" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_PostalAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_HomeNumber, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_HomeNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Home Number" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_HomeNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_WorkNumber, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_WorkNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Work Number" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_WorkNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_CellNumber, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_CellNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Cell Number" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_CellNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_CarRegistartion_Number, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_CarRegistartion_Number, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Car Registration Number" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_CarRegistartion_Number, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_Employer, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_Employer, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Employer" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_Employer, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.Adopter_Status_ID, "Adopter_Status_ID", htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.DropDownList("Adopter_Status_ID", null, htmlAttributes: new { @class = "form-control" })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_Status_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Amount_of_Family_Memebers, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Amount_of_Family_Memebers, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Amount of Family Members" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Amount_of_Family_Memebers, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.No_of_Children, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.No_of_Children, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Number Of Children" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.No_of_Children, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Age_of_Children, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Age_of_Children, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Age Of Children" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Age_of_Children, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property_Securely_Closed, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Property_Securely_Closed)
+                <br />
+                @Html.ValidationMessageFor(model => model.Property_Securely_Closed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Properyty_Include_Pool, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Properyty_Include_Pool)
+                <br />
+                @Html.ValidationMessageFor(model => model.Properyty_Include_Pool, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pool_Secured, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Pool_Secured)
+                <br />
+                @Html.ValidationMessageFor(model => model.Pool_Secured, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Animal_Shelter_Available, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Animal_Shelter_Available)
+                <br />
+                @Html.ValidationMessageFor(model => model.Animal_Shelter_Available, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sick_Animal, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Sick_Animal)
+                <br />
+                @Html.ValidationMessageFor(model => model.Sick_Animal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sick_Animal_Diagnosis, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Sick_Animal_Diagnosis, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Sick Animal's Diagnosis" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Sick_Animal_Diagnosis, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Animal_Sleep_Location, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Animal_Sleep_Location, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Animal's Sleep Location" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Animal_Sleep_Location, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Given_Animal_Away, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Given_Animal_Away)
+                <br />
+                @Html.ValidationMessageFor(model => model.Given_Animal_Away, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.HomeCheck_Suburb, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HomeCheck_Suburb, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Suburb Location" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.HomeCheck_Suburb, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Type_of_House, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Type_of_House, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Type Of House" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Type_of_House, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopted_Before, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Adopted_Before)
+                <br />
+                @Html.ValidationMessageFor(model => model.Adopted_Before, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Complex_or_Flat, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Complex_or_Flat)
+                <br />
+                @Html.ValidationMessageFor(model => model.Complex_or_Flat, "", new { @class = "text-danger", style = "display:inline;" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Animal_Allowed, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Animal_Allowed)
+                <br />
+                @Html.ValidationMessageFor(model => model.Animal_Allowed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Animal_Captivity, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Animal_Captivity, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter if the Animal will be Caged" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Animal_Captivity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Animal_Vaccines_Updated, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Animal_Vaccines_Updated)
+                <br />
+                @Html.ValidationMessageFor(model => model.Animal_Vaccines_Updated, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adopter_Occupation, htmlAttributes: new { @class = "control-label col-md-2", style = "display:inline;" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adopter_Occupation, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Adopter Occupation" } })
+            <br />
+            @Html.ValidationMessageFor(model => model.Adopter_Occupation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AdoptifySystem.Vet_Appointment_Master>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animal.Animal_Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Veterinarian.Vet_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VetAppReason.Reason)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal.Animal_Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Veterinarian.Vet_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VetAppReason.Reason)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Vet_Appoint_Line_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Vet_Appoint_Line_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Vet_Appoint_Line_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

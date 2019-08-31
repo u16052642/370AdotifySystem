@@ -1,0 +1,133 @@
+﻿@model IEnumerable<AdoptifySystem.Animal_Treatment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:green">@ViewBag.Message</h2><br />
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>Animal Treatment Information</h1>
+    </div>
+
+    <div class="newButton">
+        @Html.ActionLink("Add", "Create", "Animal_Treatment", null, new { @class = "btn btn-success 	glyphicon glyphicon-plus" })
+    </div>
+    <p>
+        @using (Html.BeginForm("Index", "Veterinarians", FormMethod.Get))
+        {
+            <b>Search by:</b>@Html.RadioButton("Searchby", "Animal_Name", true) <text>Vet Name</text>
+            @Html.RadioButton("Searchby", "Treat_Name")<text> Vet Address</text><br />
+                        @Html.TextBox("search")<input type="submit" value="Search" ? />
+        }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+               Animal
+            </th>
+            <th>
+                Treatment Start Date
+            </th>
+            <th>
+                Treatment End Date
+            </th>
+            <th>
+                Treatment Quantity (kg/g)
+            </th>
+            <th>
+                Treatment Regularity
+            </th>
+            <th>
+                Treatment Name
+            </th>
+            <th>
+                Treatment Cost
+            </th>
+            <th>
+                Comment
+            </th>
+   
+            <th>
+                Diagnosis Details
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal.Animal_Name)
+                </td> 
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treat_StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treat_EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treat_Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treat_Regularity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treat_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treat_cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mecidal_Card.Diagnosis_Details)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Treat_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Treat_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Treat_ID })*@
+                    <button class="btn btn-info glyphicon glyphicon-info-sign" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Animal_ID)"> More Info</button>
+                </td>
+            </tr>
+
+            <div /id="@Html.DisplayFor(modelItem => item.Animal_ID)" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="info_card">
+                    <div class="card_inner">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2> Medical Treatment Details of :</h2>
+                        <h2>  @Html.DisplayFor(modelItem => item.Animal.Animal_Name) </h2>
+                        <hr />
+                    </div>
+                    <div class="data">
+
+                        <span class="value">Email:</span> @Html.DisplayFor(modelItem => item.Treat_StartDate) <br />
+
+                        <span class="value">Treat End Date:</span>@Html.DisplayFor(modelItem => item.Treat_EndDate)<br />
+                        <span class="value">Treatment Name:</span>@Html.DisplayFor(modelItem => item.Treat_Name)<br />
+                        <span class="value">Address:</span>@Html.DisplayFor(modelItem => item.Treat_Quantity)<br />
+
+                        <span class="value">Address:</span>@Html.DisplayFor(modelItem => item.Treat_Regularity)<br />
+                        
+                        <span class="value">Address:</span>@Html.DisplayFor(modelItem => item.Treat_Quantity)<br />
+                        <span class="value">Address:</span>@Html.DisplayFor(modelItem => item.Treat_Quantity)<br />
+                        <br />
+                        <div class="">
+                            @Html.ActionLink("Edit", "Edit", "Animal_Treatment", new { id = item.Animal_ID }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+                            @Html.ActionLink("Delete", "Delete", "Animal_Treatment", new { id = item.Animal_ID }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                        </div>
+                        <br />
+                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove" data-dismiss="modal"><i></i>Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        }
+
+    </table>
+    </div>

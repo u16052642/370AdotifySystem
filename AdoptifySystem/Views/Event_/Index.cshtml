@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AdoptifySystem.Event_>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                End Date
+            </th>
+            <th>
+                Total Guest Number
+            </th>
+            <th>
+                Ticket Price
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Event Type
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Guest_Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Ticket_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Type.Event_Type_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Event_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Event_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Event_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

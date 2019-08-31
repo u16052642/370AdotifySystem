@@ -1,0 +1,82 @@
+﻿@model AdoptifySystem.Models.nickeymodel.Innovation
+@{
+    ViewBag.Title = "AddBreedType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main">
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+            <div>
+                <div class="col-sm-10" style='background-color: #2ba6cb'><h1 style="color:white;">Add Animal Breed</h1></div>
+            </div>
+
+        </div><div class="form-horizontal">
+            <h4 style="color:red">@ViewBag.errormessage</h4>
+            <hr />
+            <div class="form-group">
+                <label>Enter Animal Breed Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="AnimalBreedName" name="Animal_Breed_Name" placeholder="Animal Breed Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Enter Animal Breed Description</label>
+                <div class="col-md-10">
+                    <textarea type="text" class="form-control" id="AnimalBreedDescription" name="Animal_Breed_Description" placeholder="Animal Breed Description"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><b>Select Animal Type</b></label>
+                <div class="col-md-10">
+                    <select name="Animal_Type_ID">
+                        @if (Model.animalTypes != null)
+                        {
+                            foreach (var item in Model.animalTypes)
+                            {
+                                <option value="@item.Animal_Type_ID">@item.Animal_Type_Name</option>
+                            }
+                        }
+                        else
+                        {
+                            <option>Go add Employee type</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                    <button type="submit" name="button" value="Save" class="btn btn-success float-right">Save</button>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+    @section scripts{
+        <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+         $(function () {
+            var successMessage = '@TempData["EditMessage"]'
+            if (successMessage != '')
+                alertify.warning(successMessage);
+         });
+        $(function () {
+            var successMessage = '@TempData["DeleteMessage"]'
+            if (successMessage != '')
+                alertify.error(successMessage);
+        });
+
+        </script>
+    }

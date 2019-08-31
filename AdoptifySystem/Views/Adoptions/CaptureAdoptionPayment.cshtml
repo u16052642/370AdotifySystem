@@ -1,0 +1,90 @@
+﻿@model AdoptifySystem.Payment_Type
+
+@{
+    ViewBag.Title = "CaptureAdoptionPayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="main">
+    <div class="" style="text-align:center;padding-left:120px">
+        <h1>Capture Adoption Payment</h1>
+    </div>
+    <hr />
+    @using (Html.BeginForm("Index","Adoptions"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Adoption Payment Details</h4>
+            <hr />
+            <div>
+                <label>Adoption ID: </label> <label style="color:red">@ViewBag.ID</label>
+            </div>
+            <div>
+                <label>Adopter's Details: </label> <label style="color:red">@ViewBag.IDName</label>
+            </div>
+            <div>
+                <label>Animal Details: </label> <label style="color:red">@ViewBag.IDet</label>
+            </div>
+            <hr />
+            <br />
+           
+            <div>
+                <label style="color:darkcyan; font-size:200%">Animal Adoption Fee : R</label> <label style="color:darkcyan; font-size:200%">@ViewBag.Price</label>
+            </div>
+            <br />
+            <div>
+                <label>Payment Type: </label> <select required id="Payment" name="Payment" class="vn form-control" onclick="(this)">
+                    <option></option>
+                    <option id="Payment" value="Cash" name="Payment">Cash</option>
+                    <option id="Payment" value="EFT" name="Payment">EFT</option>
+
+                </select>
+
+            </div>
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Adoption_ID, "Adoption_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Adoption_ID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Adoption_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Animal_Type_ID, "Animal_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Animal_Type_ID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Animal_Type_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            @*<div class="form-group">
+                <label>Payment_Type</label>
+                <div class="col-md-10">
+
+                </div>
+            </div>*@
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Adoption_Fee, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Adoption_Fee, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Adoption_Fee, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <br />
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Pay" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back", "AdoptionPaymentIndex", "Adoptions", null, new { @class = "btn btn-primary glyphicon glyphicon-circle-arrow-left" })
+    </div>
+    </div>

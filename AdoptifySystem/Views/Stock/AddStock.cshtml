@@ -1,0 +1,110 @@
+﻿@model AdoptifySystem.Models.nickeymodel.Flexible
+
+@{
+    ViewBag.Title = "Add Stock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+<h2>Add Stock</h2>
+@using (Html.BeginForm())
+{
+
+    <label></label>
+    if (Model.Stock_Types != null)
+    {
+        <select name="Stock_Type_ID" id="exampleList">
+
+            @foreach (var item in Model.Stock_Types)
+            {
+                <option value="@item.Stock_Type_ID">@item.Stock_Type_Name</option>
+
+            }
+        </select>
+        <br />
+        <h1>Food Detail</h1>
+        <label>Food Packaging Type:</label>
+        <div id="RadioFood_Packaging_Type">
+            @foreach (var item in Model.packaging_Types)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Packaging_Type_ID" value="@item.Packaging_Type_ID" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        @item.Packaging_Type_Name
+                    </label>
+                    </div>
+                    }
+                    @*<div class="form-check">
+                    <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="Tin" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Tin
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="Bag" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Bag
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="Biscuits" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Biscuits
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Treats
+                    </label>
+                </div>*@
+                </div>
+                <label>Unit Type:</label>
+                <div id="RadioUnit_Type">
+                    @foreach (var item in Model.unit_Types)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Unit_Type_ID" id="exampleRadios1" value="@item.Unit_Type_ID" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                @item.Unit_Type_Name
+                            </label>
+                        </div>
+                    }
+                    @*<div class="form-check">
+                    <input class="form-check-input" type="radio" name="Unit_Type" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        G
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Unit_Type" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        KG
+                    </label>
+                </div>*@
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Units:</label>
+                    <input type="number" name="Unit_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Units">
+                    <small id="emailHelp" class="hide text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <h1>Stock Detail</h1>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Number of Items:</label>
+                    <input type="number" name="Stock_Quantity" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Number of Items" />
+                    <small id="emailHelp" class="hide form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Description:</label>
+                    <input type="tel" name="Stock_Description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Description">
+                    <small id="emailHelp" class="hide form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                    <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Save</button>
+                </div>
+            </div>
+            }
+    </div>

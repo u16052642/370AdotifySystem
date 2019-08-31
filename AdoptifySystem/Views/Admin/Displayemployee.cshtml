@@ -1,0 +1,19 @@
+﻿@model AdoptifySystem.Models.Employee
+@if (Model != null)
+{
+    <h2>Current Employee Selected</h2>
+    <div id="display" class="card">
+        <img src="https://i.pinimg.com/originals/4c/cf/da/4ccfdaf6092dc341376e6fdb8130d09d.jpg" alt="Avatar" style="width:500px">
+        <div class="container">
+            <h4><b>@Model.Emp_Name @Model.Emp_Surname </b></h4>
+            <p>Gender:@Model.Emp_IDNumber</p>
+            <p>Date of Birth:@Model.Emp_Date_Employed</p>
+            <p>Employee Type:@Model.Employee_Type</p>
+        </div>
+    </div>
+}
+else
+{
+
+    <h1>Nothing</h1>
+}

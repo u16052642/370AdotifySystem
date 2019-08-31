@@ -1,0 +1,222 @@
+﻿@model IEnumerable<AdoptifySystem.Adopter>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div id="main">
+    <h2>Adopter</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        @using (Html.BeginForm("Index", "Adopters", FormMethod.Get))
+        {
+            <b>Search by:</b>@Html.RadioButton("Searchby", "Adopter_Name", true) <text>Adopter Name</text>
+            @Html.RadioButton("Searchby", "Adopter_Surname")<text>Adopter Surname</text><br />
+            @Html.TextBox("search")<input type="submit" value="Search" ? />
+        }
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Adopter_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adopter_Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adopter_Email)
+            </th>
+            @**<th>
+                    @Html.DisplayNameFor(model => model.Adopter_Address)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Adopter_PostalAddress)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Adopter_HomeNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adopter_WorkNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adopter_CellNumber)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Adopter_CarRegistartion_Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adopter_Employer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adopter_Occupation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount_of_Family_Memebers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.No_of_Children)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age_of_Children)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property_Securely_Closed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Properyty_Include_Pool)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pool_Secured)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Animal_Shelter_Available)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sick_Animal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sick_Animal_Diagnosis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Animal_Sleep_Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Given_Animal_Away)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HomeCheck_Suburb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type_of_House)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adopted_Before)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Complex_or_Flat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Animal_Allowed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Animal_Captivity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Animal_Vaccines_Updated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title.Title_Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adopter_Status.Adopter_Status_Name)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adopter_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adopter_Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adopter_Email)
+                </td>
+                @*<td>
+                            @Html.DisplayFor(modelItem => item.Adopter_Address)
+                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adopter_PostalAddress)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adopter_HomeNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adopter_WorkNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adopter_CellNumber)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Adopter_CarRegistartion_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adopter_Employer)
+                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Adopter_Occupation)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount_of_Family_Memebers)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.No_of_Children)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age_of_Children)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Property_Securely_Closed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Properyty_Include_Pool)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pool_Secured)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Animal_Shelter_Available)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sick_Animal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sick_Animal_Diagnosis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Animal_Sleep_Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Given_Animal_Away)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HomeCheck_Suburb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type_of_House)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adopted_Before)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Complex_or_Flat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Animal_Allowed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Animal_Captivity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Animal_Vaccines_Updated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title.Title_Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adopter_Status.Adopter_Status_Name)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Adopter_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Adopter_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Adopter_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

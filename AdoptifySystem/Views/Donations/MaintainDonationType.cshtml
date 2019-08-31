@@ -1,0 +1,34 @@
+﻿@model AdoptifySystem.Donation_Type
+@{
+    ViewBag.Title = "Add Donation Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Add Donation Type</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Donation_Type_ID)
+        <div class="form-horizontal">
+            <h4 style="color:red">@ViewBag.errormessage</h4>
+            <hr />
+            <div class="form-group">
+                <label>Donation Type Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DonationTypename" name="Donation_Type_Name" value="@Model.Donation_Type_Name" placeholder="Donation Type Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Donation Type Description</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DonationTypeDescription" name="Donation_Type_Description" value="@Model.Donation_Type_Description" placeholder="Donation Type Description"></input>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                    <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Save</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

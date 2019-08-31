@@ -1,0 +1,16 @@
+﻿
+body {
+}
+
+/*Buttons*/
+
+body {
+  margin: 10px;
+}
+.info_card.products {
+    width: 200px;
+    height: auto;
+    float: left;
+    padding-left:20px;
+    margin-left:20px;
+}

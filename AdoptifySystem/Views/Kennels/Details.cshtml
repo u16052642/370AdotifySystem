@@ -1,0 +1,44 @@
+﻿@model AdoptifySystem.Kennel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Kennel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Kennel_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Kennel_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Kennel_Number)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Kennel_Number)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Kennel_Capacity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Kennel_Capacity)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Kennel_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

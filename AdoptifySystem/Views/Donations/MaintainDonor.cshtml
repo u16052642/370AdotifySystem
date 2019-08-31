@@ -1,0 +1,56 @@
+﻿@model AdoptifySystem.Models.nickeymodel.Flexible
+
+@{
+    ViewBag.Title = "Maintain Donor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main">
+    <h2>Maintain Donor</h2>
+    @using (Html.BeginForm())
+    {
+        if (Model != null)
+        {
+            using (Html.BeginForm())
+            {
+                @Html.HiddenFor(model => model.donor.Donor_ID)
+                <select name="Title_ID" id="exampleList">
+                    @foreach (var item in Model.Titles)
+                    {
+                        <option value="@item.Title_ID">@item.Title_Description</option>
+                        @*<input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />*@
+                    }
+                </select>
+                <br />
+                <label>
+                    Donor Name
+                </label>
+                <br />
+                <input name="Donor_Name" type="text" value="@Model.donor.Donor_Name" />
+                <br />
+                <label>
+                    Donor Surname
+                </label>
+                <br />
+                <input name="Donor_Surname" type="text" value="@Model.donor.Donor_Surname" />
+                <br />
+                <label>
+                    Donor Email
+                </label>
+                <br />
+                <input name="Donor_Email" type="text" value="@Model.donor.Donor_Email" />
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                        <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Update</button>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h1>the Title is empty</h1>
+        }
+    }
+    </div>

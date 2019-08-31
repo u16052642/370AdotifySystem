@@ -1,0 +1,191 @@
+﻿@model AdoptifySystem.Models.nickeymodel.Innovation
+@{
+    ViewBag.Title = "AddEmployee";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+        }
+    </style>
+</head>
+<div id="main">
+    @using (Html.BeginForm("AddEmployee", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <h1 align="center">Add Employee</h1>
+        </div>
+        <div class="row">
+            <div class="column">
+                @Html.AntiForgeryToken()
+                <div>
+                    <div class="col-sm-10" style='background-color: #2ba6cb'><h2 style="color:white;">Employee Details</h2></div>
+                </div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label><b>Title</b> </label>
+                    <div class="col-md-10">
+                        <select name="Title">
+                            @if (Model.Titles != null)
+                            {
+                                foreach (var item in Model.Titles)
+                                {
+                                    <option value="@item.Title_ID">@item.Title_Description</option>
+                                }
+
+                            }
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><b></b></label>
+                    <div class="col-md-10">
+                        <select name="EmployeeType">
+                            @if (Model.empTypes != null)
+                            {
+                                foreach (var item in Model.empTypes)
+                                {
+                                    <option value="@item.Emp_Type_ID">@item.Emp_Type_Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option></option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" name="Gender" value="Male" id="Male">
+                    <label for="customRadio1"><b>Male</b></label>
+                </div>
+                <div>
+                    <input type="radio" name="Gender" value="Female" id="Female">
+                    <label for="customRadio2"><b>Female</b></label>
+                </div>
+                <div class="form-group">
+                    <label><b> </b></label>
+                    <div class="col-md-10">
+
+                        <input name="Emp_Name" type="text" placeholder="Enter Name" required />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b></b> </label>
+                    <div class="col-md-10">
+
+                        <input name="Emp_Surname" type="text" placeholder="Enter Surname" required />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b></b> </label>
+                    <div class="col-md-10">
+                        <input name="Emp_ContactNumber" type="text" placeholder="Enter Contact Details" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b></b> </label>
+                    <div class="col-md-10">
+                        <input name="Emp_IDNumber" type="text" placeholder="Enter ID/Passport Number" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b> </b></label>
+                    <div class="col-md-10">
+                        <input name="Emp_Email" type="text" placeholder="Enter Email Address" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b></b></label>
+                    <div class="col-md-10">
+                        <input name="Emp_Date_Employed" type="datetime" placeholder="MM/DD/YY" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b></b></label>
+                    <div class="col-md-10">
+                        <input type="file" name="Contract" id="FileName" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.employee.Emp_Contract, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><b></b></label>
+                    <div class="col-md-10">
+                        <input name="Username" type="text" placeholder="Enter Username" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b></b></label>
+                    <div class="col-md-10">
+                        <input name="Password" type="text" id="Password" placeholder="Enter Password" maxlength="8" />
+                    </div>
+                </div>
+                @*///script*@
+                <script>
+                    function myPassword() {
+                        var a = document.getElementById("Password").value;
+                        var b = document.getElementById("Passwords").value;
+
+
+                        if (a != b) {
+                            document.getElementById("messages").innerHTML;
+                            return false;
+                        }
+                    }
+                </script>
+            </div>
+
+
+        </div>
+
+
+        <div class="column">
+            <div>
+                <div class="col-sm-10" style='background-color: #2ba6cb'><h style="color:white;">Assign User Role </h></div>
+            </div>
+            <label><b>Please Select Level Of Accessiblity:</b></label>
+            <div>
+
+                @if (Model.Roles != null)
+                {
+
+
+                    foreach (var item in Model.Roles)
+                    {
+                        <input type="checkbox" name="Role" value="@item.Role_ID">
+                        <label for="defaultUnchecked">@item.Role_Name</label>
+                        <br>
+                    }
+                }
+
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" name="button" value="Save" onsubmit="myPassword" class="btn btn-success float-right">Save</button>
+                @*<input type="submit" name="button"  value="Save" class="btn btn-default" />*@
+                <input type="reset" name="button" value="Reset" class="btn" />
+                <button type="button" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+            </div>
+        </div>
+    }
+    </div>
+

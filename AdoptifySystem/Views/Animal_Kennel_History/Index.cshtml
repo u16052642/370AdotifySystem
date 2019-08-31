@@ -1,0 +1,45 @@
+﻿
+@model List<AdoptifySystem.Models.KennelHistoryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="main">
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Animal Name
+            </th>
+            <th>
+                Kennel Name
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal.Animal_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kennel.Kennel_Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Animal_Kennel_History_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Animal_Kennel_History_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Animal_Kennel_History_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <a href="@Url.Action("ExportToExcel","Animal_Kennel_History")">Export Excel</a>
+    </div>
